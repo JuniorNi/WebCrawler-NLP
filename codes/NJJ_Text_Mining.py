@@ -17,10 +17,9 @@ os.getcwd()
 
 # 创建语料库
 def make_corpos():
-    path = r'E:\blog_知识储备\jieba分词\WebCrawler-NLP\data'
     filePaths = []
     fileContents = []
-    for root, dirs, files in os.walk(path):
+    for root, dirs, files in os.walk(r'..\data'):
         for name in files:
             filePath = os.path.join(root, name)
             filePaths.append(filePath)
@@ -44,7 +43,7 @@ def split_zh(corpos):
         fileContent = row['fileContent']
         segs = jieba.cut(fileContent)
         for seg in segs:
-            if zhPattern.search(seg):
+            if zhPattern.search(seg) and len(seg.strip())>0:
                 segments.append(seg)
                 filePaths.append(filePath)
     segmentDataFrame = pd.DataFrame({'segment': segments, 'filePath': filePaths})  
@@ -62,7 +61,7 @@ def freq_cnt(segmentDataFrame):
                 columns=["计数"], ascending=False
             )
     # 移除停用词
-    stopwords = pd.read_csv( r'.\data\StopwordsCN.txt', encoding='utf8',index_col=False)
+    stopwords = pd.read_csv( r'..\StopwordsCN.txt', encoding='utf8',index_col=False)
     fSegStat = segStat[~segStat.segment.isin(stopwords.stopword)]
     
     return fSegStat
@@ -85,12 +84,12 @@ def wordcloud(fSegStat):
     # plt.show()
     
 
-def main():
-    corpos = make_corpos()
-    segmentDataFrame = split_zh(corpos)
-    fSegStat = freq_cnt(segmentDataFrame)
-    wordcloud(fSegStat)
 
 # 当被import作为模块调用的时候，if以下的代码就不会被执行，也就是说main()函数不会被执行。
 if __name__ == "__main__":
-    main()
+    corpos = make_corpos()
+    segmentDataFrame = split_zh(corpos)
+    fSegStat = freq_cnt(segmentDataFrame)
+    fSegStat.to_csv(r'..\output\seg_freq.csv', index = False, header = False, encoding  = 'utf-8')
+    # wordcloud(fSegStat)
+    
