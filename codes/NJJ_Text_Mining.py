@@ -1,8 +1,8 @@
 # -*- coding: utf-8 -*-
 """
 Created on Mon Jun 12 20:17:00 2017
-
 @author: Junior
+把刚哥的压缩包放到data文件夹下并解压，生成text文件夹即可
 """
 import re
 import os
