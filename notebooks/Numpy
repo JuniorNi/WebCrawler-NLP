@@ -1,0 +1,19 @@
+http://www.ctolib.com/topics-96158.html
+
+1.Numpy
+Python没有提供数组，列表（List）可以完成数组，但不是真正的数据，当数据量增大时，，它的速度很慢。所以Numpy扩展包提供了数组支持，同时很多高级扩展包依赖它。例如：Scipy、Matplotlib、Pandas。
+
+2.Scipy
+该包提供矩阵支持，以及矩阵相关的数值计算模块。如果说Numpy让Python有了Matlab的味道，那么Scipy就让Python真正地成为二半个Matlib。因为涉及到矩阵内容，而课程中主要使用数组，所以不再介绍。
+
+3.Pandas
+Pandas是面板数据（Panel Data）的简写。它是Python最强大的数据分析和探索工具，因金融数据分析工具而开发，支持类似SQL的数据增删改查，支持时间序列分析，灵活处理缺失数据，后面详细介绍。
+
+4.Scikit-Learn
+Scikit-Learn是一个基于python的用于数据挖掘和数据分析的简单且有效的工具，它的基本功能主要被分为六个部分：分类(Classification)、回归(Regression)、聚类(Clustering)、数据降维(Dimensionality Reduction)、模型选择(Model Selection)、数据预处理(Preprocessing)，前面写的很多文章算法都是出自该扩展包。
+详见官网：http://scikit-learn.org/stable/
+
+5.Matplotlib
+该包主要用于绘图和绘表，强大的数据可视化工具，做图库，语法类似MATLAB。同时，Seaborn也是数据可视化的工具包。
+注意：这些包在Anaconda集成环境中已经存在，可以直接使用，最早我是通过Python2.7来编写代码的，安装过程通过pip install numpy，而且安装顺序非常讲究，容易出错，所以推荐大家使用该集成包。
+
